@@ -28,7 +28,7 @@ export const ScoreTable = ({ questionNum, answer }) => {
 
  
   return (
-    <TableContainer component={Paper}   style={{ width: 650, marginLeft: 'auto', marginRight: 'auto', marginTop: 30 }}>
+    <TableContainer component={Paper}  style={{ minWidth: 250, maxWidth: 650, marginLeft: 'auto', marginRight: 'auto', marginTop: 30, display: 'flex', flexDirection: 'column' ,}}>
       <Table sx={{ minWidth: 0 }} aria-label="simple table">
         <TableHead>
           <TableRow>

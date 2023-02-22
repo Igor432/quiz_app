@@ -122,7 +122,8 @@ export const Quiz = ({ quiz, topic, ammount }) => {
         answer = { right }
         />{" "} < /
         div > { " " } <
-        /main>{" "} < / >
+        /main>{" "} < /
+        >
     );
 };
 

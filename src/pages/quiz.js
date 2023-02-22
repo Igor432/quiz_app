@@ -1,6 +1,6 @@
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import { Question } from "./components/Question";
+import { Question } from "./components/question";
 import { message } from "antd";
 import { useState } from "react";
 import { ScoreTable } from "./components/ScoreTable";

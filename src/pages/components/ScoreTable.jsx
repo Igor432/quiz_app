@@ -15,14 +15,15 @@ export const ScoreTable = ({ questionNum, answer }) => {
   const [number, setNumber] = useState(0);
   const [row, setRow] = useState([]);
 
-  if (row !== undefined) {
+  
     useEffect(() => {
+    
       setNumber(questionNum);
 
       setRow([...row, { [questionNum]: answer }]);
+ 
     }, [questionNum, answer]);
-  }
-
+  
 
 
  
@@ -64,6 +65,8 @@ export const ScoreTable = ({ questionNum, answer }) => {
     </TableContainer>
   );
 };
+
+export default ScoreTable
 
 /*
               {row.length> 0 && row.map((rowy) =>(

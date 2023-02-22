@@ -1,12 +1,11 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import { GetStaticProps } from "next";
-import { Question } from "../pages/components/question";
-import { message } from "antd";
+
+
+
 import { useState } from "react";
-import { ScoreTable } from "./components/ScoreTable";
-import { Quiz } from "../pages/quiz";
+
 import Link from "next/link";
 
 /*

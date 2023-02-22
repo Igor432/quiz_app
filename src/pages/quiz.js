@@ -1,6 +1,6 @@
 import styles from "@/styles/Home.module.css";
 import { useRouter } from "next/router";
-import { Question } from "../pages/components/question";
+import Question from "./components/Question";
 import { message } from "antd";
 import { useState } from "react";
 import { ScoreTable } from "./components/ScoreTable";
@@ -120,10 +120,9 @@ export const Quiz = ({ quiz, topic, ammount }) => {
         />{" "} <
         ScoreTable questionNum = { questionNumber }
         answer = { right }
-        />{" "} <
-        /div>{" "} <
-        /main>{" "} <
-        />
+        />{" "} < /
+        div > { " " } <
+        /main>{" "} < / >
     );
 };
 

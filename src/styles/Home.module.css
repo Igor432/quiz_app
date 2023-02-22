@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+}
+
+.Form {
+    display: flex;
+    justify-content: center;
+}
+
+.topic_list {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+    list-style: none;
+    gap: 30px;
+}

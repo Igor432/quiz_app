@@ -8,7 +8,7 @@ import Paper from "@mui/material/Paper";
 import { useState, useEffect } from "react";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import styles from "@/styles/ScoreTable.module.css";
+import styles from "@/styles/scoreTable.module.css";
 
 
 export const ScoreTable = ({ questionNum, answer }) => {

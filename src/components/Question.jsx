@@ -1,10 +1,10 @@
 import { Radio, Form, Button, message } from "antd";
 import styles from "@/styles/Question.module.css";
 
-export const Question = ({ question, answers, nextFunc, setAnswer }) => {
-console.log(question)
-let questionCleared = ''
 
+export const Question = ({ question, answers, nextFunc, setAnswer, number, showAnswer, correctAnswer }) => {
+
+let questionCleared = ''
 
 if (question !== undefined) {
  questionCleared = question
@@ -34,30 +34,50 @@ answers = answers.map(answer =>  answer.replace(/&#039;/g, "'")
 
   return (
     <Form id="Form" onFinish={nextFunc} label="radio" className={styles.Form}>
+      <h3 className={styles.question_number}>#{number}</h3>
       <h5 className={styles.question}> {questionCleared} </h5>{" "}
       <Radio.Group buttonStyle="solid" className={styles.Radio_list}>
         {" "}
         {answers &&
           answers.map((answer, index) => {
            
-        
+        if (answer === correctAnswer) {
+          return <li className={ styles.answer_buttons} key={index}>
+          <Radio.Button
+            className={showAnswer ? styles.radio_button_right : styles.radio_button}
+            value={answer}
+            key={index}
+            id={index}
+            name="answer"
+            onChange={(e) => setAnswer(e.target.value)}
+           
+          >
+            
+            {answer}
+          </Radio.Button>
+        </li>
+        } else {
 
             return (
               <li className={styles.answer_buttons} key={index}>
                 <Radio.Button
-                  className={styles.radio_button}
+                  className={ styles.radio_button}
                   value={answer}
                   key={index}
+                  id={index}
                   name="answer"
                   onChange={(e) => setAnswer(e.target.value)}
+                 
                 >
-                  {" "}
-                  {answer}{" "}
-                </Radio.Button>{" "}
+                  
+                  {answer}
+                </Radio.Button>
               </li>
+        
             );
+        }
           })}{" "}
-      </Radio.Group>{" "}
+      </Radio.Group>
       <Button
         form="Form"
         key="submit"

@@ -4,17 +4,18 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-top: 40px;
 }
 
 .question {
-    display: flex;
-    align-self: center;
     font-size: 20px;
     padding-top: 50px;
     padding-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
 }
+
+.question_number {}
 
 .Radio_list {
     display: flex;
@@ -30,10 +31,36 @@
 .radio_button {
     justify-content: center;
     display: flex;
+    align-items: center;
     width: 240px;
     max-width: 350px;
-    height: 40px;
-    max-height: 400px;
+    min-height: 60px;
+    height: fit-content;
+    overflow: auto;
+}
+
+.radio_button_right {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    max-width: 350px;
+    min-height: 60px;
+    height: fit-content;
+    overflow: auto;
+    background-color: green;
+}
+
+.radio_button_wrong {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    max-width: 350px;
+    min-height: 60px;
+    height: fit-content;
+    overflow: auto;
+    border-color: red;
 }
 
 .next_button {

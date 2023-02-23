@@ -1,5 +1,5 @@
 import styles from "@/styles/Home.module.css";
-import { Question } from "../components/question";
+import { Question } from "../components/Question";
 import { useEffect, useState } from "react";
 import { ScoreTable } from "../components/ScoreTable";
 
@@ -62,10 +62,9 @@ export const Quiz = ({ quiz, ammount }) => {
         ScoreTable questionNum = { questionNumber }
         ammount = { ammount }
         answer = { right }
-        />{" "} <
-        /div>{" "} <
-        /main>{" "} <
-        />
+        />{" "} < /
+        div > { " " } <
+        /main>{" "} < / >
     );
 };
 

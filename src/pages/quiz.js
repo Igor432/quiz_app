@@ -2,6 +2,11 @@ import styles from "@/styles/Home.module.css";
 import { Question } from "../components/Question";
 import { useEffect, useState } from "react";
 import { ScoreTable } from "../components/ScoreTable";
+import Link from "next/link";
+import { chooseTopic, chooseAmmount } from "../redux/quizSlice";
+import { useDispatch } from "react-redux";
+
+
 
 export const Quiz = ({ quiz, ammount }) => {
     const [questionNumber, setQuestion] = useState(0);
@@ -44,6 +49,14 @@ export const Quiz = ({ quiz, ammount }) => {
         }
     };
 
+    const dispatch = useDispatch()
+
+    const getBack = () => {
+        dispatch(chooseTopic(''))
+        dispatch(chooseAmmount(0))
+    }
+
+
     return ( <
         >
         <
@@ -51,6 +64,12 @@ export const Quiz = ({ quiz, ammount }) => {
         <
         div className = { styles.grid } >
         <
+        Link href = "/" >
+        <
+        button className = { styles.radio_button }
+        onClick = { getBack } > Go Back < /button> <
+        /Link> <
+        /div>{" "} <
         Question number = { questionNumber + 1 }
         showAnswer = { showAnswer }
         question = { question.question }
@@ -62,15 +81,17 @@ export const Quiz = ({ quiz, ammount }) => {
         ScoreTable questionNum = { questionNumber }
         ammount = { ammount }
         answer = { right }
-        />{" "} < /
-        div > { " " } <
-        /main>{" "} < / >
+        />
+
+        <
+        /main>{" "} <
+        />
     );
 };
 
 export async function getServerSideProps(context) {
     console.log(context.query);
-    const { topic, ammount } = context.query
+    const { topic, ammount } = context.query;
 
     if (topic === "Movies") {
         const res = await fetch(

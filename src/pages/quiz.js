@@ -3,16 +3,22 @@ import { Question } from "../components/Question";
 import { useEffect, useState } from "react";
 import { ScoreTable } from "../components/ScoreTable";
 import Link from "next/link";
-import { chooseTopic, chooseAmmount } from "../redux/quizSlice";
-import { useDispatch } from "react-redux";
-
-
+import {
+    chooseTopic,
+    chooseAmmount,
+    setAnswer,
+    setRows,
+    deleteRows,
+    setScore,
+    deleteScore,
+} from "../redux/quizSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Result } from "@/components/Results";
+import { getAnswer } from "@/redux/selectors";
 
 export const Quiz = ({ quiz, ammount }) => {
     const [questionNumber, setQuestion] = useState(0);
     const [answer, setAnswer] = useState("");
-    const [score, setScore] = useState(0);
-    const [right, setRight] = useState("");
     const [questions, getQuestions] = useState(quiz);
     const [showAnswer, setShowAnswer] = useState(false);
 
@@ -21,6 +27,8 @@ export const Quiz = ({ quiz, ammount }) => {
     const answers = [...question.incorrect_answers, question.correct_answer];
     answers.sort((a, b) => a.length - b.length);
     const correctAnswer = question.correct_answer;
+
+
 
     useEffect(() => {
         if (showAnswer === true) {
@@ -36,57 +44,68 @@ export const Quiz = ({ quiz, ammount }) => {
             console.log("Please choose the answer");
         } else {
             if (answer === correctAnswer) {
+                dispatch(
+                    setRows({
+                        [questionNumber]: "good",
+                    })
+                );
                 setShowAnswer(true);
                 setAnswer("");
-                setRight("good");
-                setScore((prev) => prev + 1);
+
+                dispatch(setScore());
             } else {
                 setShowAnswer(true);
-
+                dispatch(
+                    setRows({
+                        [questionNumber]: "bad",
+                    })
+                );
                 setAnswer("");
-                setRight("bad");
             }
         }
     };
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const getBack = () => {
-        dispatch(chooseTopic(''))
-        dispatch(chooseAmmount(0))
-    }
-
+        dispatch(chooseTopic(""));
+        dispatch(chooseAmmount(0));
+        dispatch(deleteRows());
+        dispatch(deleteScore());
+    };
 
     return ( <
-        >
+            >
+            <
+            main >
+            <
+            div className = { styles.grid } >
+            <
+            Link href = "/" >
+            <
+            button className = { styles.back_button }
+            onClick = { getBack } > { " " }
+            Go Back { " " } <
+            /button>{" "} < /
+            Link > { " " } <
+            /div>{" "} {
+            questionNumber < ammount ? ( <
+                Question number = { questionNumber + 1 }
+                showAnswer = { showAnswer }
+                question = { question.question }
+                setAnswer = { setAnswer }
+                answers = { answers }
+                nextFunc = { nextQuestion }
+                correctAnswer = { correctAnswer }
+                />
+            ) : ( <
+                Result / >
+            )
+        } { " " } <
+        ScoreTable / >
         <
-        main >
-        <
-        div className = { styles.grid } >
-        <
-        Link href = "/" >
-        <
-        button className = { styles.radio_button }
-        onClick = { getBack } > Go Back < /button> <
-        /Link> <
-        /div>{" "} <
-        Question number = { questionNumber + 1 }
-        showAnswer = { showAnswer }
-        question = { question.question }
-        setAnswer = { setAnswer }
-        answers = { answers }
-        nextFunc = { nextQuestion }
-        correctAnswer = { correctAnswer }
-        />{" "} <
-        ScoreTable questionNum = { questionNumber }
-        ammount = { ammount }
-        answer = { right }
-        />
-
-        <
-        /main>{" "} <
-        />
-    );
+        /main>{" "} < / >
+);
 };
 
 export async function getServerSideProps(context) {

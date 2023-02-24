@@ -5,11 +5,21 @@
     align-items: center;
     padding: 6rem;
     min-height: 100vh;
+    padding-top: 30px;
+}
+
+.description>p {
+    padding-top: 30px;
 }
 
 .Form {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    gap: 50px;
 }
 
 .topic_list {
@@ -20,12 +30,83 @@
     gap: 30px;
 }
 
-.radio_button {
-    width: 80px;
-    padding: 10px 20px 10px 20px;
-    height: 30px;
-    position: absolute;
-    height: fit-content;
-    margin-left: 20px;
-    margin-top: 20px;
+.Radio_list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.topic_image {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.topic_button {
+    width: 200px;
+    height: 400px;
+    overflow: hidden;
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    border: 1px #948181d8 solid;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    font-size: 23px;
+}
+
+.topic_button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.topic_button:active {
+    filter: brightness(0.9);
+}
+
+.topic_button>span {
+    display: block;
+    position: relative;
+    transition: transform var(--motion-duration) var(--motion-ease);
+    z-index: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.topic_button:hover>span {
+    transform: scale(1.05);
+}
+
+.topic_button:active>span {
+    transform: scale(0.95);
+}
+
+.back_button {
+    width: 120px;
+    height: 80px;
+    background: transparent;
+    border: 1px #948181d8 solid;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    cursor: pointer;
+    font-size: 23px;
+}
+
+@media (min-width: 350px) and (max-width: 700px) {
+    .topic_image {
+        width: 120px;
+        height: auto;
+    }
+    .topic_button {
+        width: 120px;
+        height: 160px;
+        overflow: hidden;
+        font-size: 15px;
+    }
+    .back_button {
+        height: 39px;
+        width: 150px;
+    }
 }

@@ -9,33 +9,28 @@ import { useState, useEffect } from "react";
 import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import styles from "@/styles/scoreTable.module.css";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { getRows } from "@/redux/selectors";
 
+export const ScoreTable = () => {
 
+  const rows = useSelector(getRows)
 
-
-export const ScoreTable = ({ questionNum, answer }) => {
-  const [number, setNumber] = useState(questionNum);
-  const [row, setRow] = useState([]);
 
 
   const upperRows = [];
-  const router = useRouter()
-const Ammount = router.query.ammount
+  const router = useRouter();
+  const Ammount = router.query.ammount;
 
   for (let i = 1; i <= Ammount; i++) {
     upperRows.push(i);
-   
   }
 
-  useEffect(() => {
-    setNumber(questionNum);
 
-    setRow([...row, { [questionNum]: answer }]);
-  }, [ questionNum]);
 
   return (
-    <TableContainer
+    <TableContainer className={styles.Table_container}
       component={Paper}
       style={{
         minWidth: 250,
@@ -52,11 +47,11 @@ const Ammount = router.query.ammount
           <TableRow>
             <TableCell style={{ textAlign: "left" }}>Question #</TableCell>
             {upperRows &&
-              upperRows.map((row) => (
+              upperRows.map((row, index) => (
                 <TableCell
                   align="right"
                   style={{ textAlign: "center", width: 30 }}
-                  key={row}
+                  key={index}
                   className={styles.table_number}
                 >
                   {row}
@@ -66,20 +61,25 @@ const Ammount = router.query.ammount
         </TableHead>
         <TableBody>
           <TableRow
-            key={row}
+            key={0}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
-            <TableCell component="th" scope="row"   style={{  width: 30 }}>
+            <TableCell component="th" scope="row" style={{ width: 30 }}>
               Score
             </TableCell>
-            {delete row[0] &&
-              row.map((rowy, index) => (
+            {rows &&
+              rows.map((rows, index) => (
                 <TableCell
                   key={index}
                   className={styles.table_answer}
-                  style={{ textAlign: "center",  width: 30, paddingLeft: 5, paddingRight: 5 }}
+                  style={{
+                    textAlign: "center",
+                    width: 30,
+                    paddingLeft: 5,
+                    paddingRight: 5,
+                  }}
                 >
-                  {rowy[index] === "bad" ? (
+                  {rows[index] === "bad" ? (
                     <HighlightOffIcon style={{ color: "#ed6c02" }} />
                   ) : (
                     <DoneOutlineIcon style={{ color: "#4caf50" }} />
@@ -94,4 +94,3 @@ const Ammount = router.query.ammount
 };
 
 export default ScoreTable;
-

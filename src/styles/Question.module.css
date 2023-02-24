@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 40px;
 }
 
 .question {
@@ -14,8 +13,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
-.question_number {}
 
 .Radio_list {
     display: flex;
@@ -37,6 +34,16 @@
     min-height: 60px;
     height: fit-content;
     overflow: auto;
+    background: transparent;
+    border: 1px #948181d8 solid;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    font-size: 23px;
+}
+
+.radio_button:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
 }
 
 .radio_button_right {
@@ -66,6 +73,19 @@
 .next_button {
     margin-top: 50px;
     width: 300px;
+    height: 40px;
     margin-left: auto;
     margin-right: auto;
+    background: transparent;
+    border: 1px #948181d8 solid;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+    font-size: 15px;
+}
+
+@media (min-width: 350px) and (max-width: 1000px) {
+    .Radio_list {
+        padding-left: 110px;
+        padding-right: 110px;
+    }
 }

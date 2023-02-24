@@ -105,12 +105,15 @@
     }
     .topic_button {
         width: 120px;
-        height: 200px;
+        height: 190px;
         overflow: hidden;
         font-size: 12px;
     }
     .back_button {
         height: 39px;
-        width: 190px;
+        width: 130px;
+    }
+    .topic_list {
+        gap: 15px;
     }
 }

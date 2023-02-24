@@ -17,12 +17,12 @@ export const StartPage = () => {
   const Ammount = useSelector(getAmmount);
 
   const selectTopic = (e) => {
-    console.log(e.target.id);
+  
     dispatch(chooseTopic(e.target.id));
   };
 
   const selectAmmount = (e) => {
-    console.log(e.target.id);
+ 
     dispatch(chooseAmmount(e.target.id));
   };
 

@@ -55,6 +55,8 @@
     border-radius: 30px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
     font-size: 23px;
+    text-decoration: none;
+    color: black;
 }
 
 .topic_button:hover {
@@ -92,6 +94,8 @@
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
     cursor: pointer;
     font-size: 23px;
+    text-decoration: none;
+    color: black;
 }
 
 @media (min-width: 350px) and (max-width: 700px) {
@@ -101,12 +105,12 @@
     }
     .topic_button {
         width: 120px;
-        height: 160px;
+        height: 200px;
         overflow: hidden;
-        font-size: 15px;
+        font-size: 12px;
     }
     .back_button {
         height: 39px;
-        width: 150px;
+        width: 190px;
     }
 }

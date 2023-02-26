@@ -35,12 +35,14 @@ export const Question = ({
     );
   }
 
-
-
   return (
     <Form id="Form" onFinish={nextFunc} label="radio" className={styles.Form}>
-      <div className={styles.question_container}><h3 className={styles.question_number}>#{number}</h3></div>
+      <div className={styles.question_container}>
+        <h3 className={styles.question_number}>#{number}</h3>
+      </div>
+      <div className={styles.question_div}>
       <h5 className={styles.question}> {questionCleared} </h5>{" "}
+      </div>
       <Radio.Group buttonStyle="solid" className={styles.Radio_list}>
         {" "}
         {answers &&

@@ -8,12 +8,10 @@
 
 .question {
     font-size: 20px;
-    padding-top: 30px;
-    padding-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 250px;
-    padding-right: 250px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .question_container {
@@ -77,6 +75,13 @@
     height: fit-content;
     overflow: auto;
     background-color: green;
+}
+
+.question_div {
+    min-height: 130px;
+    height: fit-content;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
 .radio_button_wrong {

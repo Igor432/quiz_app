@@ -90,7 +90,11 @@ export const Quiz = ({ quiz, ammount }) => {
         onClick = { getBack } >
         Go Back { " " } <
         /button>{" "} <
-        /Link>{" "} { " " } <
+        /Link>{" "} { " " } { wojak === 'bad' && showAnswer === true && < Image src = { wojakbad }
+            className = { styles.wojak_img }
+            alt = 'bad' / > || wojak === 'good' && showAnswer === true && < Image src = { wojakgood }
+            className = { styles.wojak_img_good }
+            alt = 'bad' / > } <
         /div>{" "} {
             questionNumber < ammount ? ( <
                 Question number = { questionNumber + 1 }

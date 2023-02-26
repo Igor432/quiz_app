@@ -3,10 +3,11 @@ import { Question } from "../components/Question";
 import { useEffect, useState } from "react";
 import { ScoreTable } from "../components/ScoreTable";
 import Link from "next/link";
+import Image from "next/image";
+
 import {
     chooseTopic,
     chooseAmmount,
-    setAnswer,
     setRows,
     deleteRows,
     setScore,
@@ -15,20 +16,21 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Result } from "@/components/Results";
 import { getAnswer } from "@/redux/selectors";
+import wojakgood from "../../public/good.png";
+import wojakbad from "../../public/cry.png";
 
 export const Quiz = ({ quiz, ammount }) => {
     const [questionNumber, setQuestion] = useState(0);
     const [answer, setAnswer] = useState("");
     const [questions, getQuestions] = useState(quiz);
     const [showAnswer, setShowAnswer] = useState(false);
+    const [wojak, setWojak] = useState("default");
 
     const question = questions.results[questionNumber];
 
     const answers = [...question.incorrect_answers, question.correct_answer];
     answers.sort((a, b) => a.length - b.length);
     const correctAnswer = question.correct_answer;
-
-
 
     useEffect(() => {
         if (showAnswer === true) {
@@ -51,7 +53,7 @@ export const Quiz = ({ quiz, ammount }) => {
                 );
                 setShowAnswer(true);
                 setAnswer("");
-
+                setWojak("good");
                 dispatch(setScore());
             } else {
                 setShowAnswer(true);
@@ -61,6 +63,7 @@ export const Quiz = ({ quiz, ammount }) => {
                     })
                 );
                 setAnswer("");
+                setWojak("bad");
             }
         }
     };
@@ -75,20 +78,20 @@ export const Quiz = ({ quiz, ammount }) => {
     };
 
     return ( <
-            >
-            <
-            main >
-            <
-            div className = { styles.grid } >
-            <
-            Link href = "/" >
-            <
-            button className = { styles.back_button }
-            onClick = { getBack } > { " " }
-            Go Back { " " } <
-            /button>{" "} < /
-            Link > { " " } <
-            /div>{" "} {
+        >
+        <
+        main >
+        <
+        div className = { styles.grid } >
+        <
+        Link href = "/" >
+        <
+        button className = { styles.back_button_question }
+        onClick = { getBack } >
+        Go Back { " " } <
+        /button>{" "} <
+        /Link>{" "} { " " } <
+        /div>{" "} {
             questionNumber < ammount ? ( <
                 Question number = { questionNumber + 1 }
                 showAnswer = { showAnswer }
@@ -98,14 +101,17 @@ export const Quiz = ({ quiz, ammount }) => {
                 nextFunc = { nextQuestion }
                 correctAnswer = { correctAnswer }
                 />
+
+
             ) : ( <
                 Result / >
             )
         } { " " } <
         ScoreTable / >
         <
-        /main>{" "} < / >
-);
+        /main>{" "} <
+        />
+    );
 };
 
 export async function getServerSideProps(context) {
@@ -154,3 +160,8 @@ export async function getServerSideProps(context) {
 }
 
 export default Quiz;
+
+
+/*
+       {questionNumber > 1 && wojak === 'good'  ? <Image src={wojakgood} className={styles.wojak_img_good} alt='correct'/> : <Image src={wojakbad} className={styles.wojak_img} alt='incorrect'/>}
+       */

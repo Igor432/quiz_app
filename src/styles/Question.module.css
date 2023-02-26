@@ -12,6 +12,27 @@
     padding-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+.question_container {
+    margin-top: 60px;
+    height: 80px;
+    width: 80px;
+    color: white;
+    box-shadow: 6px 6px rgba(0, 0, 0, .15);
+    transition: all .4s ease;
+    color: rgb(0, 0, 0);
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.question_number {
+    position: relative;
 }
 
 .Radio_list {
@@ -87,5 +108,16 @@
     .Radio_list {
         padding-left: 110px;
         padding-right: 110px;
+    }
+    .question {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    .question_number {
+        margin-top: 0px;
+    }
+    .question_container {
+        height: 60px;
+        width: 60px;
     }
 }

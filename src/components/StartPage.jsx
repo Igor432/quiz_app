@@ -17,12 +17,10 @@ export const StartPage = () => {
   const Ammount = useSelector(getAmmount);
 
   const selectTopic = (e) => {
-  
     dispatch(chooseTopic(e.target.id));
   };
 
   const selectAmmount = (e) => {
- 
     dispatch(chooseAmmount(e.target.id));
   };
 
@@ -106,11 +104,15 @@ export const StartPage = () => {
           </div>
         ) : (
           <div className={styles.description}>
-                <Link href="/">
-              <button onClick={getBack}  className={styles.back_button}>Go Back</button>
+            <Link href="/">
+              <button onClick={getBack} className={styles.back_button}>
+                Go Back
+              </button>
             </Link>
-            <p className={styles.choose_buttons}> Choose ammount of questions:</p>{" "}
-        
+            <p className={styles.choose_buttons}>
+              {" "}
+              Choose ammount of questions:
+            </p>{" "}
             <ul className={styles.topic_list}>
               {links.map((link, index) => (
                 <li key={index} className={styles.topic_li}>

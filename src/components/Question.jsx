@@ -1,7 +1,6 @@
 import { Radio, Form, Button, message } from "antd";
 import styles from "../styles/Question.module.css";
 
-
 export const Question = ({
   question,
   answers,
@@ -36,9 +35,11 @@ export const Question = ({
     );
   }
 
+
+
   return (
     <Form id="Form" onFinish={nextFunc} label="radio" className={styles.Form}>
-      <h3 className={styles.question_number}>#{number}</h3>
+      <div className={styles.question_container}><h3 className={styles.question_number}>#{number}</h3></div>
       <h5 className={styles.question}> {questionCleared} </h5>{" "}
       <Radio.Group buttonStyle="solid" className={styles.Radio_list}>
         {" "}

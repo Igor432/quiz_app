@@ -23,7 +23,7 @@
     border-radius: 10px;
     font-size: 15px;
     margin-bottom: 60px;
-}
+    background-image: linear-gradient(to top, #aeb9c9, #7cb5cc, #8bc5c4, #add2bd, #d3dcbe);}
 
 .result {
     display: flex;

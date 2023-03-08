@@ -15,6 +15,7 @@
 }
 
 .question_container {
+    border-radius: 40px;
     margin-top: 60px;
     height: 80px;
     width: 80px;
@@ -26,7 +27,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient( to top, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+   
+    background: #C2FBD7;
 }
 
 .question_number {
@@ -40,32 +43,33 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding-left: 240px;
-    padding-right: 240px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 .radio_button {
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    width: 240px;
-    max-width: 350px;
-    min-height: 60px;
-    height: fit-content;
-    overflow: auto;
-    background: transparent;
-    border: 1px #948181d8 solid;
-    border-radius: 30px;
-    box-shadow: 0 0 10px rgb(0, 0, 0, 1);
-    font-size: 23px;
-}
+    background-color: #C2FBD7;
+border-radius: 50px;
+border-width: 0;
+box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
+color: #083b3b;
+cursor: pointer;
+justify-content: center;
+display: flex;
+align-items: center;
+font-family: Arial, sans-serif;
+font-size: 23px;
+max-width: 350px;
+min-height: 60px;
+height: fit-content;
+padding: 0 25px;
+transition: all 200ms;
+width: 240px;
 
-.radio_button:hover {
-    filter: brightness(1.1);
-    transform: scale(1.05);
 }
 
 .radio_button_right {
+    
     justify-content: center;
     display: flex;
     align-items: center;
@@ -74,8 +78,30 @@
     min-height: 60px;
     height: fit-content;
     overflow: auto;
-    background-color: green;
+    background-color: rgb(11, 98, 11);
+    border-color: rgb(11, 98, 11) ;
+    border: 5px #083b3b;
+    color: white;
 }
+
+.radio_button:hover {
+
+color: black;
+
+transform: scale(1.05);
+    /*
+    filter: brightness(1.1);
+    transform: scale(1.05);
+    */
+}
+
+
+
+
+
+ 
+
+
 
 .question_div {
     min-height: 130px;
@@ -107,6 +133,7 @@
     border-radius: 30px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
     font-size: 15px;
+    background: #c2fbd76f;
 }
 
 @media (min-width: 350px) and (max-width: 1000px) {

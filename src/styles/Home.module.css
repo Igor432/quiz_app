@@ -56,17 +56,18 @@
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
     font-size: 23px;
     text-decoration: none;
-    color: black;
+    color: #051937f1;
+    background-color: #a6eb1238;
 }
 
 .topic_button:hover {
     filter: brightness(1.1);
-    transform: scale(1.05);
+    transform: scale(1.12);
+    transition: transform 0.5s;
+    transition: filter infinite;
+
 }
 
-.topic_button:active {
-    filter: brightness(0.9);
-}
 
 .topic_button>span {
     display: block;
@@ -88,7 +89,7 @@
 .back_button {
     width: 120px;
     height: 80px;
-    background: transparent;
+    background: #c2fbd76f;
     border: 1px #948181d8 solid;
     border-radius: 30px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
@@ -100,10 +101,16 @@
     left: 40px;
 }
 
+.back_button:hover {
+    color: black;
+transition: all 500ms;
+transform: scale(1.05);
+}
+
 .back_button_question {
     width: 120px;
     height: 80px;
-    background: transparent;
+    background: #c2fbd76f;    
     border: 1px #948181d8 solid;
     border-radius: 30px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 1);
@@ -114,6 +121,12 @@
     position: absolute;
     left: 40px;
     top: 30px;
+}
+
+.back_button_question:hover {
+    color: black;
+transition: all 500ms;
+transform: scale(1.05);
 }
 
 .wojak_img {
@@ -128,7 +141,7 @@
 .wojak_img_good {
     width: 150px;
     height: auto;
-    position: fixed;
+    position: absolute;
     right: 300px;
     top: 350px;
 }
@@ -150,11 +163,13 @@
         width: 90px;
         top: 10px;
         left: 240px;
+        position: absolute;
     }
     .wojak_img_good {
         width: 120px;
         top: 20px;
         right: 230px;
+        position: absolute;
     }
     .back_button {
         top: 40px;
@@ -192,11 +207,13 @@
         height: auto;
         left: 280px;
         top: 10px;
+        position: absolute;
     }
     .wojak_img_good {
         width: 120px;
         height: auto;
         left: 250px;
         top: 20px;
+        position: absolute;
     }
 }

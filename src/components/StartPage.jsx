@@ -8,6 +8,7 @@ import movieImg from "../../public/movie.jpg";
 import scienceImg from "../../public/science.jpg";
 import geographyImg from "../../public/geography.jpg";
 import Image from "next/image";
+import BounceLoader from "react-spinners/BounceLoader";
 
 export const StartPage = () => {
   const links = [10, 15, 20];
@@ -32,7 +33,8 @@ export const StartPage = () => {
   if (Topic !== "" && Ammount !== 0) {
     return (
       <main className={styles.main}>
-        <h2> Loading... / </h2>{" "}
+        <BounceLoader color="#36d7b7" />
+
       </main>
     );
   } else {

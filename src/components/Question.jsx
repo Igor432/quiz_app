@@ -58,6 +58,7 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
             Radio: { 
               colorPrimary: showAnswer && your=== correctAnswer ? 'green' : "#424162",
               colorPrimaryHover: "#424162",
+              colorBorder: "green"
             },
           },
         }}
@@ -94,10 +95,12 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
                       
                        styles.answer_buttons
                     }
+              
                     key={index}
                   >
                     <Radio.Button
                       className={styles.radio_button}
+                  
                       value={answer}
                       key={index}
                       id={index}

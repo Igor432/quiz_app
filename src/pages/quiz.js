@@ -44,7 +44,7 @@ export const Quiz = ({ quiz, ammount }) => {
     }
   }, [showAnswer, question]);
 
-  const nextQuestion = () => {
+  const nextQuestion = (e) => {
     if (answer === "") {
       console.log("Please choose the answer");
     } else {

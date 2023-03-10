@@ -30,6 +30,12 @@ export const Quiz = ({ quiz, ammount }) => {
     /*
   const [wojak, setWojak] = useState("default");
   */
+  Notiflix.Notify.init({
+    failure: {
+      background: '#c2fbd76f',
+      textColor: 'black',
+    }
+  })
 
   const dispatch = useDispatch();
 
@@ -59,7 +65,9 @@ export const Quiz = ({ quiz, ammount }) => {
 
 
     if (answer === "") {
-      console.log("Please choose the answer");
+      Notiflix.Notify.failure("Please choose the answer")
+
+    
     } else {
       if (answer === correctAnswer) {
         setButtonDisabled(true)

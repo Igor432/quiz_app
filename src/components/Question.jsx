@@ -1,9 +1,8 @@
 import { Radio, Form, Button, ConfigProvider } from "antd";
 import styles from "../styles/Question.module.css";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setAnswer } from "@/redux/quizSlice";
-import { getAnswer } from "@/redux/selectors";
 
 export const Question = ({
   question,

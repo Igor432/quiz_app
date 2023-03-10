@@ -34,7 +34,6 @@ export const StartPage = () => {
     return (
       <main className={styles.main}>
         <BounceLoader color="#36d7b7" />
-
       </main>
     );
   } else {
@@ -52,9 +51,8 @@ export const StartPage = () => {
                   className={styles.topic_button}
                 >
                   <span onClick={selectTopic} id="Movies">
-                    {" "}
                     Movies
-                  </span>{" "}
+                  </span>
                   <Image
                     className={styles.topic_image}
                     id="Movies"
@@ -62,18 +60,17 @@ export const StartPage = () => {
                     onClick={selectTopic}
                     alt=""
                   />
-                </button>{" "}
-              </li>{" "}
+                </button>
+              </li>
               <li className={styles.topic_li} onClick={selectTopic}>
                 <button
                   type="button"
                   id="Science&Nature"
                   className={styles.topic_button}
                 >
-                  {" "}
                   <span id="Science&Nature" onClick={selectTopic}>
                     Science & Nature
-                  </span>{" "}
+                  </span>
                   <Image
                     className={styles.topic_image}
                     id="Science&Nature"
@@ -81,18 +78,17 @@ export const StartPage = () => {
                     onClick={selectTopic}
                     alt=""
                   />
-                </button>{" "}
-              </li>{" "}
+                </button>
+              </li>
               <li className={styles.topic_li} onClick={selectTopic}>
                 <button
                   type="button"
                   id="Geography"
                   className={styles.topic_button}
                 >
-                  {" "}
                   <span id="Geography" onClick={selectTopic}>
                     Geography
-                  </span>{" "}
+                  </span>
                   <Image
                     className={styles.topic_image}
                     id="Geography"
@@ -100,8 +96,8 @@ export const StartPage = () => {
                     onClick={selectTopic}
                     alt=""
                   />
-                </button>{" "}
-              </li>{" "}
+                </button>
+              </li>
             </ul>
           </div>
         ) : (
@@ -112,9 +108,8 @@ export const StartPage = () => {
               </button>
             </Link>
             <p className={styles.choose_buttons}>
-              {" "}
               Choose ammount of questions:
-            </p>{" "}
+            </p>
             <ul className={styles.topic_list}>
               {links.map((link, index) => (
                 <li key={index} className={styles.topic_li}>

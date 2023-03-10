@@ -3,6 +3,7 @@ import { Question } from "../components/Question";
 import { useEffect, useState } from "react";
 import { ScoreTable } from "../components/ScoreTable";
 import Link from "next/link";
+import Notiflix from 'notiflix';
 import Image from "next/image";
 
 import {
@@ -12,6 +13,7 @@ import {
   deleteRows,
   setScore,
   deleteScore,
+  setAnswer
 } from "../redux/quizSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Result } from "@/components/Results";
@@ -19,15 +21,18 @@ import { getAnswer } from "@/redux/selectors";
 import wojakgood from "../../public/good.png";
 import wojakbad from "../../public/cry.png";
 
+
 export const Quiz = ({ quiz, ammount }) => {
   const [questionNumber, setQuestion] = useState(0);
-  const [answer, setAnswer] = useState("");
   const [questions, getQuestions] = useState(quiz);
-
   const [showAnswer, setShowAnswer] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false)
     /*
   const [wojak, setWojak] = useState("default");
   */
+
+  const dispatch = useDispatch();
+
 
   const question = questions.results[questionNumber];
 
@@ -35,39 +40,49 @@ export const Quiz = ({ quiz, ammount }) => {
   answers.sort((a, b) => a.length - b.length);
   const correctAnswer = question.correct_answer;
 
+  const answer = useSelector(getAnswer)
+
+
   useEffect(() => {
     if (showAnswer === true) {
       setTimeout(() => {
         setShowAnswer(false);
         setQuestion((prev) => prev + 1);
+        setButtonDisabled(false)
+        dispatch(setAnswer(''))
       }, 1500);
     }
-  }, [showAnswer, question]);
+  }, [showAnswer, question, dispatch]);
 
   const nextQuestion = (e) => {
+
+
+
     if (answer === "") {
       console.log("Please choose the answer");
     } else {
       if (answer === correctAnswer) {
+        setButtonDisabled(true)
         dispatch(
           setRows({
             [questionNumber]: "good",
           })
         );
         setShowAnswer(true);
-        setAnswer("");
+     
         /*
         setWojak("good");
         */
         dispatch(setScore());
       } else {
+        setButtonDisabled(true)
         setShowAnswer(true);
         dispatch(
           setRows({
             [questionNumber]: "bad",
           })
         );
-        setAnswer("");
+  
         /*
         setWojak("bad");
         */
@@ -75,7 +90,6 @@ export const Quiz = ({ quiz, ammount }) => {
     }
   };
 
-  const dispatch = useDispatch();
 
   const getBack = () => {
     dispatch(chooseTopic(""));
@@ -103,10 +117,10 @@ export const Quiz = ({ quiz, ammount }) => {
             number={questionNumber + 1}
             showAnswer={showAnswer}
             question={question.question}
-            setAnswer={setAnswer}
             answers={answers}
             nextFunc={nextQuestion}
             correctAnswer={correctAnswer}
+            buttonDisabled={buttonDisabled}
        
           />
 

@@ -1,20 +1,29 @@
 import { Radio, Form, Button, ConfigProvider } from "antd";
 import styles from "../styles/Question.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setAnswer } from "@/redux/quizSlice";
+import { getAnswer } from "@/redux/selectors";
 
 export const Question = ({
-  yourAnswer,
   question,
   answers,
   nextFunc,
-  setAnswer,
   number,
   showAnswer,
   correctAnswer,
+  buttonDisabled
 }) => {
   let questionCleared = "";
 
-const [your, setYour] = useState('')
+  const [your, setYour] = useState("");
+
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setAnswer(your));
+  }, [your, dispatch]);
 
   if (question !== undefined) {
     questionCleared = question
@@ -55,10 +64,11 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
       <ConfigProvider
         theme={{
           components: {
-            Radio: { 
-              colorPrimary: showAnswer && your=== correctAnswer ? 'green' : "#424162",
+            Radio: {
+              colorPrimary:
+                showAnswer && your === correctAnswer ? "green" : "#424162",
               colorPrimaryHover: "#424162",
-              colorBorder: "green"
+              colorBorder: "green",
             },
           },
         }}
@@ -80,9 +90,10 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
                       key={index}
                       id={index}
                       name="answer"
+                 
                       onChange={(e) => {
-                        setYour(e.target.value)
-                        setAnswer(e.target.value)}}
+                        setYour(e.target.value);
+                      }}
                     >
                       {answer}
                     </Radio.Button>
@@ -90,25 +101,17 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
                 );
               } else {
                 return (
-                  <li
-                    className={
-                      
-                       styles.answer_buttons
-                    }
-              
-                    key={index}
-                  >
+                  <li className={styles.answer_buttons} key={index}>
                     <Radio.Button
                       className={styles.radio_button}
-                  
                       value={answer}
                       key={index}
                       id={index}
                       checked
                       name="answer"
+                      disabled={buttonDisabled}
                       onChange={(e) => {
-                        setAnswer(e.target.value);
-                        setYour(e.target.value)
+                        setYour(e.target.value);
                       }}
                     >
                       {answer}
@@ -116,7 +119,7 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
                   </li>
                 );
               }
-            })}{" "}
+            })}
         </Radio.Group>
       </ConfigProvider>
       <Button
@@ -124,9 +127,10 @@ background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf
         key="submit"
         htmlType="submit"
         className={styles.next_button}
+        disabled={buttonDisabled}
       >
-        Next{" "}
-      </Button>{" "}
+        Next
+      </Button>
     </Form>
   );
 };
